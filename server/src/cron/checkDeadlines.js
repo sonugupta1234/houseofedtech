@@ -4,9 +4,7 @@ const sendMail = require("../utils/sendEmail");
 
 // Runs every hour
 const startCronJobs = () => {
-  cron.schedule("* * * * *", async () => {
-    // console.log("Running deadline check cron job...");
-
+  cron.schedule("0 * * * *", async () => {
     try {
       const now = new Date();
       const next24Hours = new Date(now.getTime() + 24 * 60 * 60 * 1000);
@@ -34,8 +32,6 @@ const startCronJobs = () => {
         task.isDeadlineMailSent = true;
         await task.save();
       }
-
-      //   console.log("Deadline check completed.");
     } catch (err) {
       console.error("Cron job error:", err);
     }

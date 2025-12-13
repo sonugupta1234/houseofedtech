@@ -2,6 +2,7 @@
 import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { LuLoader } from "react-icons/lu";
 import Navbar from "../components/Navbar";
 import { apiRequest } from "../lib/apiRequest";
 import { TaskCardProps } from "../components/TaskCard";
@@ -61,7 +62,8 @@ export default function TasksPage() {
 
           {loading ? (
             <div className="w-full text-center my-10">
-              <p>Loading tasks...</p>
+              <LuLoader className="w-8 h-8 text-gray-700" />
+              <strong>Loading tasks...</strong>
             </div>
           ) : tasks.length > 0 ? (
             <div className="grid grid-cols-1   sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">

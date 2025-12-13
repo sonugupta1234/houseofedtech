@@ -39,6 +39,7 @@ export default function Navbar() {
   const handlelogout = () => {
     logout();
     localStorage.removeItem("token");
+    router.push("/auth/login");
   };
 
   return (
