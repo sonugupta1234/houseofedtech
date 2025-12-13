@@ -13,7 +13,7 @@ Also user will get to know about the deadline of the task approaching in his ema
 
 ### `Project Screenshots`
 
-- ![Screenshot (260)](https://user-images.githubusercontent.com/112892522/221486632-fa465c01-6249-44dd-a056-7c7234dc673a.png)
+- ![SmartTask](https://github.com/sonugupta1234/houseofedtech/blob/main/smarttask.png?raw=true)
 
 ### `Tech Stack`
 
@@ -36,5 +36,5 @@ Technologies used in the project:
 
 ### `Project Details`
 
-. github link- https://github.com/sonugupta1234/wandering-cactus-2429/tree/main/sasta_bazar <br/>
-. live link- https://india-mart-3knhm4vnh-kripashankarpandey.vercel.app/
+. github link- https://github.com/sonugupta1234/houseofedtech <br/>
+. live link- https://client-psi-amber.vercel.app
