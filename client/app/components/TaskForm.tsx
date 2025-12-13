@@ -119,6 +119,7 @@ const TaskForm = ({ mode, task, id }: TaskFormProps) => {
               </div>
 
               {/* Image Upload */}
+              {/* Image Upload */}
               <div>
                 <label className="block font-medium mb-1">
                   Image <span className="text-red-600">*</span>
@@ -136,15 +137,52 @@ const TaskForm = ({ mode, task, id }: TaskFormProps) => {
                   type="file"
                   accept="image/*"
                   className="w-full border px-3 py-2 rounded"
-                  onChange={(e) => {
+                  onChange={async (e) => {
                     const file = e.target.files?.[0];
-                    if (file) {
-                      const reader = new FileReader();
-                      reader.onload = () => {
-                        setFieldValue("image", reader.result as string);
-                      };
-                      reader.readAsDataURL(file);
-                    }
+                    if (!file) return;
+
+                    // Compress function
+                    const compressImage = (file: File): Promise<string> => {
+                      return new Promise((resolve) => {
+                        const reader = new FileReader();
+                        reader.readAsDataURL(file);
+
+                        reader.onload = (event) => {
+                          const img = new Image();
+                          img.src = event.target?.result as string;
+
+                          img.onload = () => {
+                            const canvas = document.createElement("canvas");
+                            const ctx = canvas.getContext("2d")!;
+
+                            const MAX_WIDTH = 600;
+                            const scaleSize = MAX_WIDTH / img.width;
+
+                            canvas.width = MAX_WIDTH;
+                            canvas.height = img.height * scaleSize;
+
+                            ctx.drawImage(
+                              img,
+                              0,
+                              0,
+                              canvas.width,
+                              canvas.height,
+                            );
+
+                            // Compress to JPEG (70% quality)
+                            const compressedDataUrl = canvas.toDataURL(
+                              "image/jpeg",
+                              0.7,
+                            );
+
+                            resolve(compressedDataUrl);
+                          };
+                        };
+                      });
+                    };
+
+                    const compressed = await compressImage(file);
+                    setFieldValue("image", compressed);
                   }}
                 />
 

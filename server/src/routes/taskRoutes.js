@@ -7,12 +7,13 @@ const {
   deleteTask,
 } = require("../controllers/taskController");
 const { auth } = require("../middleware/authmiddleware");
+const optionalauth = require("../middleware/optionalauth");
 
 const taskRoutes = express.Router();
 
 taskRoutes.post("/", auth, createTask);
 
-taskRoutes.get("/", auth, getTasks);
+taskRoutes.get("/", optionalauth, getTasks);
 
 taskRoutes.get("/:id", auth, getTaskById);
 

@@ -74,7 +74,6 @@ export default function Navbar() {
                   <p>
                     Hi, <strong className="ml-2">{user.name}</strong>
                   </p>
-                  <strong>{user.email}</strong>
 
                   <button
                     onClick={handlelogout}

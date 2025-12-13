@@ -5,6 +5,7 @@ const dotenv = require("dotenv");
 const taskRoutes = require("./src/routes/taskRoutes.js");
 const userRoutes = require("./src/routes/userRoutes.js");
 const connectDB = require("./src/Config/db.js");
+const startCronJobs = require("./src/cron/checkDeadlines.js");
 
 dotenv.config();
 
@@ -17,6 +18,7 @@ app.use("/api/tasks", taskRoutes);
 app.use("/api/users", userRoutes);
 
 connectDB();
+startCronJobs();
 
 const PORT = process.env.PORT || 5000;
 

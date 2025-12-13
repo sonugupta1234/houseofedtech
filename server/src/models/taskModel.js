@@ -12,6 +12,10 @@ const taskSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    // email: {
+    //   type: String,
+    //   required: true,
+    // },
 
     description: {
       type: String,
@@ -33,6 +37,7 @@ const taskSchema = new mongoose.Schema(
     progress: {
       type: Number,
     },
+    isDeadlineMailSent: { type: Boolean, default: false },
   },
   { timestamps: true },
 );
