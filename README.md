@@ -4,8 +4,8 @@ SmartTask
 
 ### Description
 
-SmartTask basically deals with Student Task Management, as User can Simply create its task,read the task created, check for its progress by edit and when completed mark it as completed and can delete the task..<br/>
-Also user will get to know about the deadline of the task approaching in his email by the procedure of cron jobs.
+SmartTask basically deals with Student Task Management, as User can Simply create its task,read the task created, check for its progress,can edit the task created and when progress is 100% the task will be mark as completed and can delete the task..<br/>
+Also user will get to know about the deadline of the task approaching in his email by the procedure of cron jobs implemented in backend..
 
 
 ### This is a Solo Project completed in 3 days..
