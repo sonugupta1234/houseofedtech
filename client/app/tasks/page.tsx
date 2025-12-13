@@ -61,9 +61,9 @@ export default function TasksPage() {
           </h1>
 
           {loading ? (
-            <div className="w-full text-center my-10">
-              <LuLoader className="w-8 h-8 text-gray-700" />
-              <strong>Loading tasks...</strong>
+            <div className="w-full   text-center  my-10">
+              <LuLoader className="w-8 m-auto h-8 text-gray-700" />
+              <strong className="mt-4">Loading tasks...</strong>
             </div>
           ) : tasks.length > 0 ? (
             <div className="grid grid-cols-1   sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
