@@ -13,7 +13,7 @@ Also user will get to know about the deadline of the task approaching in his ema
 
 ### `Project Screenshots`
 
-- ![Screenshot (260)](https://user-images.githubusercontent.com/112892522/221486632-fa465c01-6249-44dd-a056-7c7234dc673a.png)
+- ![Screenshot (260)](https://github.com/user-attachments/assets/ffa65e9e-d6d5-4b0f-81ec-8eb43a1cdd1d.png)
 
 ### `Tech Stack`
 
