@@ -4,7 +4,7 @@ const sendMail = require("../utils/sendEmail");
 
 // Runs every hour
 const startCronJobs = () => {
-  cron.schedule("0 * * * *", async () => {
+  cron.schedule("* * * * *", async () => {
     // console.log("Running deadline check cron job...");
 
     try {
@@ -15,6 +15,7 @@ const startCronJobs = () => {
       const tasks = await Task.find({
         deadline: { $gte: now, $lte: next24Hours },
         isDeadlineMailSent: false,
+        progress: { $lt: 100 },
       }).populate("userId");
 
       for (const task of tasks) {

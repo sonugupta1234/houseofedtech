@@ -38,10 +38,11 @@ export default function TaskCard({ task, getAllTasks }: TaskCardProps) {
 
   return (
     <div className="border p-4 rounded-lg shadow-sm hover:shadow-md transition">
-      <div className="flex justify-between">
-        <h2 className="text-xl font-semibold">{task.title}</h2>
+      {/* Header */}
+      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3">
+        <h2 className="text-lg sm:text-xl font-semibold">{task.title}</h2>
 
-        <div className="w-16 h-16">
+        <div className="w-14 h-14 sm:w-16 sm:h-16 self-start sm:self-auto">
           <CircularProgressbar
             value={task.progress}
             text={task.progress === 100 ? "✔" : `${task.progress}%`}
@@ -55,16 +56,18 @@ export default function TaskCard({ task, getAllTasks }: TaskCardProps) {
         </div>
       </div>
 
-      <div className="flex justify-between">
-        <div className="mt-3">
-          <img
-            src={task.image}
-            alt={task.title}
-            className="w-30 h-30 object-cover rounded-md border"
-          />
-        </div>
-        <div>
-          <p className="text-gray-600 mt-2">{task.description}</p>
+      {/* Content */}
+      <div className="mt-4 flex flex-col md:flex-row gap-4">
+        {/* Image */}
+        <img
+          src={task.image}
+          alt={task.title}
+          className="w-full md:w-32 h-40 md:h-32 object-cover rounded-md border"
+        />
+
+        {/* Text */}
+        <div className="flex-1">
+          <p className="text-gray-600">{task.description}</p>
 
           <div className="mt-3 text-sm text-gray-500">
             <p>
@@ -78,17 +81,18 @@ export default function TaskCard({ task, getAllTasks }: TaskCardProps) {
         </div>
       </div>
 
-      <div className="flex-end gap-3 mt-4">
+      {/* Actions */}
+      <div className="mt-4 flex flex-col sm:flex-row gap-3 sm:justify-end">
         <Link
           href={`/tasks/edit/${task._id}`}
-          className="px-4 cursor-pointer py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+          className="text-center px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
         >
           Edit
         </Link>
 
         <button
           onClick={handleDelete}
-          className="px-4 py-1.5 cursor-pointer ml-2 bg-red-600 text-white rounded hover:bg-red-700"
+          className="px-4 cursor-pointer py-2 bg-red-600 text-white rounded hover:bg-red-700"
         >
           Delete
         </button>

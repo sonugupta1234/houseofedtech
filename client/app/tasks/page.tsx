@@ -44,23 +44,27 @@ export default function TasksPage() {
     <>
       <Navbar />
 
-      <div className="flex flex-col justify-start items-center mt-10">
-        <div className="w-full p-6 rounded-lg text-center">
-          <button
-            onClick={handleNewTasks}
-            className="bg-red-600 text-white rounded-full px-4 py-2 mb-4 cursor-pointer"
-          >
-            Create a new Task
-          </button>
+      <div className="flex flex-col items-center  mt-10">
+        <div className="w-full max-w-8xl px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-center  mb-6">
+            <button
+              onClick={handleNewTasks}
+              className="bg-red-600 text-white rounded-full px-6 py-2 cursor-pointer"
+            >
+              Create a new Task
+            </button>
+          </div>
 
-          <h1 className="text-2xl font-bold mb-6 mt-6">Your Tasks</h1>
+          <h1 className="text-2xl font-bold mb-6 text-center sm:text-left">
+            Your Tasks
+          </h1>
 
           {loading ? (
             <div className="w-full text-center my-10">
               <p>Loading tasks...</p>
             </div>
           ) : tasks.length > 0 ? (
-            <div className="grid grid-cols-4 gap-4">
+            <div className="grid grid-cols-1   sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
               {tasks.map((task: Task) => (
                 <TaskCard
                   key={task._id}
@@ -70,7 +74,7 @@ export default function TasksPage() {
               ))}
             </div>
           ) : (
-            <p className="mt-20">No tasks yet.</p>
+            <p className="mt-20 text-center">No tasks yet.</p>
           )}
         </div>
       </div>
