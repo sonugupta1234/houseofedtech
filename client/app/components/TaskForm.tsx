@@ -69,7 +69,7 @@ const TaskForm = ({ mode, task, id }: TaskFormProps) => {
   };
   return (
     <ProtectedRoute>
-      <div className="max-w-xl mx-auto py-10 shadow-xl">
+      <div className="max-w-xl mx-auto py-10 shadow-xl/30">
         <h1 className="text-2xl font-bold mb-6 text-center">
           {mode === "edit" ? "Edit Task" : "Create New Task"}
         </h1>
@@ -166,13 +166,13 @@ const TaskForm = ({ mode, task, id }: TaskFormProps) => {
                               0,
                               0,
                               canvas.width,
-                              canvas.height,
+                              canvas.height
                             );
 
                             // Compress to JPEG (70% quality)
                             const compressedDataUrl = canvas.toDataURL(
                               "image/jpeg",
-                              0.7,
+                              0.7
                             );
 
                             resolve(compressedDataUrl);

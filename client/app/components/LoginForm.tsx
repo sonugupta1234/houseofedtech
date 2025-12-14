@@ -33,7 +33,7 @@ const LoginForm = () => {
     try {
       const loginUser = await apiRequest("post", "/users/login", values);
       if (loginUser) {
-        localStorage.setItem("token", loginUser.token);
+        localStorage.setItem("user", JSON.stringify(loginUser.user));
         login();
         toast.success("User LoggedIn Successfully!");
         router.push("/tasks");
@@ -44,8 +44,8 @@ const LoginForm = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-20 p-6 bg-white rounded shadow">
-      <h1 className="text-2xl font-semibold mb-4">Login</h1>
+    <div className="max-w-md mx-auto mt-20 p-6 bg-white rounded shadow-xl/30">
+      <h1 className="text-2xl text-center font-semibold mb-4">Login</h1>
 
       <Formik
         initialValues={initialValues}

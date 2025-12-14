@@ -9,12 +9,23 @@ export default function ProtectedRoute({
 }: {
   children: React.ReactNode;
 }) {
-  const { isAuth } = useAuth();
+  const { isAuth, loading } = useAuth();
   const router = useRouter();
 
+  console.log(loading, isAuth, "auth");
   useEffect(() => {
-    if (!isAuth) router.push("/auth/login");
-  }, [isAuth]);
+    if (!loading && !isAuth) {
+      router.replace("/auth/login");
+    }
+  }, [isAuth, loading]);
+
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <p className="text-gray-500">Checking authentication...</p>
+      </div>
+    );
+  }
 
   return <>{children}</>;
 }

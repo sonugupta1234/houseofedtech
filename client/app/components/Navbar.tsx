@@ -3,42 +3,39 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { CgProfile } from "react-icons/cg";
-import { apiRequest } from "../lib/apiRequest";
 import useAuth from "../hooks/useAuth";
 import { useRouter } from "next/navigation";
 
 type SingleUser = {
+  id: number;
   name: string;
   email: string;
+  token: string;
 };
 
 export default function Navbar() {
   const [hover, setHover] = useState<Boolean | null>(false);
   const { isAuth, logout } = useAuth();
   const router = useRouter();
-  const [user, setUser] = useState<SingleUser>({
-    name: "",
-    email: "",
-  });
-
-  const getUser = async () => {
-    try {
-      const getSingleUser = await apiRequest("get", "/users/profile");
-      if (getSingleUser) {
-        setUser(getSingleUser);
-      }
-    } catch (error) {
-      console.error("Error fetching tasks:", error);
-    }
-  };
+  const [user, setUser] = useState<SingleUser | null>(null);
 
   useEffect(() => {
-    getUser();
+    const storedUser = localStorage.getItem("user");
+
+    if (storedUser) {
+      try {
+        const parsedUser: SingleUser = JSON.parse(storedUser);
+        setUser(parsedUser);
+      } catch (err) {
+        localStorage.removeItem("user");
+        setUser(null);
+      }
+    }
   }, []);
 
   const handlelogout = () => {
     logout();
-    localStorage.removeItem("token");
+    localStorage.removeItem("user");
     router.push("/auth/login");
   };
 
@@ -73,7 +70,7 @@ export default function Navbar() {
               {isAuth ? (
                 <div>
                   <p>
-                    Hi, <strong className="ml-2">{user.name}</strong>
+                    Hi, <strong className="ml-2">{user?.name}</strong>
                   </p>
 
                   <button
@@ -87,14 +84,14 @@ export default function Navbar() {
                 <div>
                   <Link
                     href="/auth/login"
-                    className="block px-3 py-2 rounded hover:bg-gray-100 text-gray-700"
+                    className="block bg-red-500 text-white px-3 py-2 rounded hover:bg-red-400 text-gray-700"
                   >
                     Login
                   </Link>
 
                   <Link
                     href="/auth/register"
-                    className="block px-3 py-2 rounded hover:bg-gray-100 text-gray-700"
+                    className="block bg-red-500 text-white px-3 py-2 mt-2 rounded hover:bg-red-400 text-gray-700"
                   >
                     Register
                   </Link>

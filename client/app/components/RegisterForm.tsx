@@ -42,8 +42,8 @@ const RegisterForm = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-20 p-6 bg-white rounded shadow">
-      <h1 className="text-2xl font-semibold mb-4">Register</h1>
+    <div className="max-w-md mx-auto mt-20 p-6 bg-white rounded shadow-xl/30">
+      <h1 className="text-2xl text-center font-semibold mb-4">Register</h1>
 
       <Formik
         initialValues={initialValues}

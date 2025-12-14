@@ -9,9 +9,10 @@ const api = axios.create({
 
 api.interceptors.request.use((req) => {
   if (typeof window !== "undefined") {
-    const token = localStorage.getItem("token");
-    if (token) {
-      req.headers.Authorization = `Bearer ${token}`;
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      const parsedUser = JSON.parse(storedUser);
+      req.headers.Authorization = `Bearer ${parsedUser.token}`;
     }
   }
   return req;
@@ -20,7 +21,7 @@ api.interceptors.request.use((req) => {
 export async function apiRequest<response = any>(
   method: string,
   url: string,
-  data?: any,
+  data?: any
 ): Promise<response> {
   try {
     const response = await api({
