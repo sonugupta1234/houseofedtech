@@ -31,6 +31,7 @@ Technologies used in the project:
 ### `Features`
 
 - Authentication <br/>
+- ProtectedRoutes for Pages <br/>
 - CRUD for Task <br/>
 - CRON Jobs for Email Sending<br/>
 
