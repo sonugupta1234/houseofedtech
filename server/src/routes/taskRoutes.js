@@ -13,7 +13,7 @@ const taskRoutes = express.Router();
 
 taskRoutes.post("/", auth, createTask);
 
-taskRoutes.get("/", optionalauth, getTasks);
+taskRoutes.get("/", auth, getTasks);
 
 taskRoutes.get("/:id", auth, getTaskById);
 

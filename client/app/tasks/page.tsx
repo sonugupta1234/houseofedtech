@@ -26,10 +26,12 @@ export default function TasksPage() {
   const getAllTasks = async () => {
     try {
       const allTask = await apiRequest("get", "/tasks");
-      setTasks(allTask);
-      setLoading(false);
+      setTasks(allTask || []);
     } catch (error) {
       console.error("Error fetching tasks:", error);
+      setTasks([]);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -76,7 +78,7 @@ export default function TasksPage() {
               ))}
             </div>
           ) : (
-            <p className="mt-20 text-center">No tasks yet.</p>
+            <p className="mt-20 text-center font-bold">No tasks yet.</p>
           )}
         </div>
       </div>
