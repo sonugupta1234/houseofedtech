@@ -10,7 +10,7 @@ interface AuthContextType {
 }
 
 export const AuthContext = createContext<AuthContextType | undefined>(
-  undefined
+  undefined,
 );
 
 interface ProviderProps {
@@ -47,3 +47,17 @@ export default function AuthContextProvider({ children }: ProviderProps) {
     </AuthContext.Provider>
   );
 }
+
+const login = () => {
+  setIsAuth(true);
+};
+
+const logout = () => {
+  setIsAuth(false);
+};
+
+return (
+  <AuthContext.Provider value={{ isAuth, login, logout, loading }}>
+    {children}
+  </AuthContext.Provider>
+);
